@@ -6,7 +6,7 @@ import (
 	"net/http"
 )
 
-func index(w http.ResponseWriter, r *http.Request){
+func index(w http.ResponseWriter, r *http.Request) {
 	// 定义模板
 	// 解析模板
 	t, err := template.New("index.tmpl").
@@ -25,12 +25,12 @@ func index(w http.ResponseWriter, r *http.Request){
 	}
 }
 
-func xss(w http.ResponseWriter, r *http.Request){
+func xss(w http.ResponseWriter, r *http.Request) {
 	// 定义模板
 	// 解析模板
 	// 解析模板之前定义一个自定义的函数safe
 	t, err := template.New("xss.tmpl").Funcs(template.FuncMap{
-		"safe": func(str string)template.HTML {
+		"safe": func(str string) template.HTML {
 			return template.HTML(str)
 		},
 	}).ParseFiles("./xss.tmpl")

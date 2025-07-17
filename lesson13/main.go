@@ -14,10 +14,10 @@ func main() {
 	r.GET("/user/:name/:age", func(c *gin.Context) {
 		// 获取路径参数
 		name := c.Param("name")
-		age := c.Param("age")  // string类型
+		age := c.Param("age") // string类型
 		c.JSON(http.StatusOK, gin.H{
 			"name": name,
-			"age": age,
+			"age":  age,
 		})
 	})
 
@@ -25,7 +25,7 @@ func main() {
 		year := c.Param("year")
 		month := c.Param("month")
 		c.JSON(http.StatusOK, gin.H{
-			"year": year,
+			"year":  year,
 			"month": month,
 		})
 	})

@@ -4,8 +4,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
-// 获取form表单提交的参数
 
+// 获取form表单提交的参数
 
 func main() {
 	r := gin.Default()
@@ -17,10 +17,10 @@ func main() {
 	// /login post
 	r.POST("/login", func(c *gin.Context) {
 		// 获取form表单提交的数据
-		//username := c.PostForm("username")
-		//password := c.PostForm("password")  // 取到就返回值，取不到返回空字符串
-		//username := c.DefaultPostForm("username", "somebody")
-		//password := c.DefaultPostForm("xxx", "***")
+		// username := c.PostForm("username")
+		// password := c.PostForm("password")  // 取到就返回值，取不到返回空字符串
+		// username := c.DefaultPostForm("username", "somebody")
+		// password := c.DefaultPostForm("xxx", "***")
 		username, ok := c.GetPostForm("username")
 		if !ok {
 			username = "sb"
@@ -30,7 +30,7 @@ func main() {
 			password = "***"
 		}
 		c.HTML(http.StatusOK, "index.html", gin.H{
-			"Name": username,
+			"Name":     username,
 			"Password": password,
 		})
 	})

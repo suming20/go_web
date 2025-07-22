@@ -10,12 +10,11 @@ import (
 
 // UserInfo --> 数据表
 type UserInfo struct {
-	ID uint
-	Name string
+	ID     uint
+	Name   string
 	Gender string
-	Hobby string
+	Hobby  string
 }
-
 
 func main() {
 	// 连接MySQL数据库
@@ -29,11 +28,11 @@ func main() {
 	db.AutoMigrate(&UserInfo{})
 
 	// 创建数据行
-	//u1 := UserInfo{1, "七米", "男", "蛙泳"}
-	//db.Create(&u1)
+	// u1 := UserInfo{1, "七米", "男", "蛙泳"}
+	// db.Create(&u1)
 	// 查询
 	var u UserInfo
-	db.First(&u)  // 查询表中第一天数据保存到u中
+	db.First(&u) // 查询表中第一天数据保存到u中
 	fmt.Printf("u:%#v\n", u)
 	// 更新
 	db.Model(&u).Update("hobby", "双色球")

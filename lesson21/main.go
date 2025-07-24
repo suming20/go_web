@@ -6,13 +6,14 @@ import (
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
+
 // gorm demo03
 
 // 1. 定义模型
 type User struct {
-	ID int64
+	ID   int64
 	Name sql.NullString `gorm:"default:'小王子'"`
-	Age int64
+	Age  int64
 }
 
 func main() {
@@ -26,8 +27,9 @@ func main() {
 	db.AutoMigrate(&User{})
 
 	// 3. 创建
-	u := User{Name: sql.NullString{String:"",Valid:true}, Age:98}  // 在代码层面创建一个User对象
-	fmt.Println(db.NewRecord(&u))  // 判断主键是否为空 true
-	db.Debug().Create(&u)  // 在数据库中创建了一条q1mi 18的记录
-	fmt.Println(db.NewRecord(&u))  // 判断主键是否为空 false
+	u := User{Name: sql.NullString{String: "", Valid: true}, Age: 98} // 在代码层面创建一个User对象
+	fmt.Println(db.NewRecord(&u))                                     // 判断主键是否为空 true
+	db.Debug().Create(&u)                                             // 在数据库中创建了一条q1mi 18的记录
+	// db.Create(&u)                                             // 在数据库中创建了一条q1mi 18的记录
+	fmt.Println(db.NewRecord(&u))                                     // 判断主键是否为空 false
 }
